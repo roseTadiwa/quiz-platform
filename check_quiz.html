@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Existence Check</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #66b2ff, pink);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+
+        @media only screen and (max-width: 600px) {
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% if quiz_exists %}
+        <p>The quiz exists in the database.</p>
+    {% else %}
+        <p>The quiz does not exist in the database.</p>
+    {% endif %}
+</body>
+</html>

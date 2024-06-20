@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submission Result</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #99ccff, #ffcc99);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #ffffff;
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #ff3366;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        a:hover {
+            background-color: #ff3366;
+            color: #ffffff;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            a {
+                padding: 8px 16px;
+                font-size: 14px;
+                margin-top: 10px;
+                margin-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Submission Result</h1>
+    <p>Quiz: {{ quiz.title }}</p>
+    <p>Score: {{ score }}</p>
+
+    <!-- Buttons to redirect to browse quizzes and view score -->
+    <a href="{% url 'browse_quizzes' %}">Browse Quizzes</a>
+    <a href="{% url 'view_score' quiz_id=quiz.id %}">View Score</a>
+</body>
+</html>

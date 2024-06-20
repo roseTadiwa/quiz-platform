@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Saved</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffcc66, #ff3366);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #ffffff;
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #ff3366;
+            border: none;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff3366;
+            color: #ffffff;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Saved</h1>
+    <p>Your quiz has been successfully saved.</p>
+    <button onclick="window.location.href='/save_quiz/home.html'">Go to Home Page</button>
+    <button onclick="window.location.href='/create_quiz/'">Create Another Quiz</button>
+</body>
+</html>

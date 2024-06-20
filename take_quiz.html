@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Platform - Take Quiz</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #666666;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666666;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Updated styling for radio buttons and labels */
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        label {
+            color: #333333;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555555;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+                margin-top: 20px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+                margin-top: 25px;
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            .option {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+
+            input[type="radio"] {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+
+            label {
+                font-size: 14px;
+                margin-left: 25px;
+            }
+
+            input[type="submit"] {
+                padding: 8px 16px;
+                font-size: 16px;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ quiz.title }}</h1>
+    <form method="post" action="{% url 'quiz_submission' quiz_id=quiz.id %}">
+        {% csrf_token %}
+        {% for question in questions %}
+            <!-- Question details -->
+            <h2>Question {{ forloop.counter }} of {{ total_questions }}</h2>
+            <p>{{ question.text }}</p>
+
+            <!-- Options -->
+            {% for option in question.options.all %}
+                <div class="option">
+                    <input type="radio" id="option_{{ question.id }}_{{ option.id }}" name="question_{{ question.id }}" value="{{ option.id }}">
+                    <label for="option_{{ question.id }}_{{ option.id }}">{{ option.text }}</label>
+                </div>
+            {% endfor %}
+
+            <br>
+        {% endfor %}
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

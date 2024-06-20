@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Quiz</title>
+    <style>
+/* Media Queries for Mobile Responsiveness */
+
+@media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            form {
+                margin-top: 10px;
+            }
+
+            input[type="text"],
+            textarea {
+                padding: 6px;
+                font-size: 14px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        body {
+            background: linear-gradient(to right, #66b2ff, pink);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create a Quiz</h1>
+    <form method="post" action="{% url 'save_quiz' %}">
+        {% csrf_token %}
+        <label for="quiz_title">Quiz Title:</label>
+        <input type="text" id="quiz_title" name="quiz_title" required><br><br>
+
+        <div id="questions">
+            <div class="question">
+                <label for="question_1">Question:</label>
+                <input type="text" id="question_1" name="question_1" required><br>
+
+                <label for="option_1_1">Option 1:</label><br>
+                <input type="text" id="option_1_1" name="option_1_1" required><br>
+
+                <label for="option_1_2">Option 2:</label><br>
+                <input type="text" id="option_1_2" name="option_1_2" required><br>
+
+                <label for="correct_option_1">Correct Answer:</label><br>
+                <input type="text" id="correct_option_1" name="correct_option_1" required><br>
+            </div>
+        </div>
+
+        <input type="hidden" id="question_count" name="question_count" value="1">
+
+        <button type="button" onclick="addQuestion()">Add Question</button><br><br>
+
+        <input type="submit" value="Create Quiz">
+    </form>
+
+    <script>
+        let questionCount = 1;
+
+        function addQuestion() {
+            questionCount++;
+
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "question";
+
+            const questionLabel = document.createElement("label");
+            questionLabel.htmlFor = `question_${questionCount}`;
+            questionLabel.innerText = "Question:";
+
+            const questionInput = document.createElement("input");
+            questionInput.type = "text";
+            questionInput.id = `question_${questionCount}`;
+            questionInput.name = `question_${questionCount}`;
+            questionInput.required = true;
+
+            const option1Label = document.createElement("label");
+            option1Label.htmlFor = `option_${questionCount}_1`;
+            option1Label.innerText = "Option 1:";
+
+            const option1Input = document.createElement("input");
+            option1Input.type = "text";
+            option1Input.id = `option_${questionCount}_1`;
+            option1Input.name = `option_${questionCount}_1`;
+            option1Input.required = true;
+
+            const option2Label = document.createElement("label");
+            option2Label.htmlFor = `option_${questionCount}_2`;
+            option2Label.innerText = "Option 2:";
+
+            const option2Input = document.createElement("input");
+            option2Input.type = "text";
+            option2Input.id = `option_${questionCount}_2`;
+            option2Input.name = `option_${questionCount}_2`;
+            option2Input.required = true;
+
+            const correctOptionLabel = document.createElement("label");
+            correctOptionLabel.htmlFor = `correct_option_${questionCount}`;
+            correctOptionLabel.innerText = "Correct Answer:";
+
+            const correctOptionInput = document.createElement("input");
+            correctOptionInput.type = "text";
+            correctOptionInput.id = `correct_option_${questionCount}`;
+            correctOptionInput.name = `correct_option_${questionCount}`;
+            correctOptionInput.required = true;
+
+            questionDiv.appendChild(questionLabel);
+            questionDiv.appendChild(questionInput);
+            questionDiv.appendChild(option1Label);
+            questionDiv.appendChild(option1Input);
+            questionDiv.appendChild(option2Label);
+            questionDiv.appendChild(option2Input);
+            questionDiv.appendChild(correctOptionLabel);
+            questionDiv.appendChild(correctOptionInput);
+
+            const questionsDiv = document.getElementById("questions");
+            questionsDiv.appendChild(questionDiv);
+
+            document.getElementById("question_count").value = questionCount;
+        }
+    </script>
+</body>
+</html>

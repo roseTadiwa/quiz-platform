@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Platform - Browse Quizzes</title>
+    <style>
+        body {
+            background: linear-gradient(to right, green, brown);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-top: 100px;
+        }
+
+        p {
+            color: #ffffff;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: decimal;
+            padding-left: 0;
+            margin-top: 40px;
+        }
+
+        li {
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #ff3366;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #ff3366;
+            color: #ffffff;
+        }
+
+       /* Media Queries for Mobile Responsiveness */
+       
+       @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            li {
+                font-size: 14px;
+            }
+
+            a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Browse Quizzes</h1>
+    <p>To participate in a quiz, click on the quiz title.</p>
+    {% if quizzes %}
+        <ul>
+            {% for quiz in quizzes %}
+            <li><a href="{% url 'take_quiz' quiz_id=quiz.id %}">{{ quiz.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No quizzes available.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Platform</title>
+    <style>
+    
+
+body {
+  background: linear-gradient(to right, blue, #ff3366);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 36px;
+  margin-top: 100px;
+}
+
+p {
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+a {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #ff3366;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: hsl(345, 100%, 60%);
+  color: #ffffff;
+}
+
+/* Media Queries for Mobile Responsiveness */
+
+@media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+                margin-top: 50px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+            a {
+                margin-top: 20px;
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Quiz Platform!</h1>
+    <p>Welcome to our online quiz platform! Get ready to test your knowledge with a wide range of quizzes. 
+        Challenge yourself, compete with others, and enjoy a seamless and user-friendly experience. 
+        Let the learning adventure begin!</p>
+    <p>Choose an option below:</p>
+    <a href="{% url 'create_quiz' %}">Create a Quiz</a>
+    <a href="{% url 'browse_quizzes' %}">Browse Available Quizzes</a>
+</body>
+</html>
