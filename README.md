@@ -9,4 +9,10 @@ The project is built using modern web technologies, such as HTML, CSS, and JavaS
 
 This project was developed as a part of my portfolio to showcase my web development skills and the ability to create a functional and engaging quiz platform.
 
+# Technologies Used
+Python Django: The project backend is built using the Python-based Django web framework, which provides a powerful and flexible platform for developing web applications.
+HTML: The front-end user interface is constructed using HTML, the standard markup language for creating web pages.
+CSS: Cascading Style Sheets (CSS) are used to control the presentation and styling of the web pages, ensuring a visually appealing and responsive user experience.
+JavaScript: JavaScript is used to add interactivity and dynamic behavior to the web pages, such as handling user interactions, validating form inputs, and updating the UI in real-time.
+
 Feel free to explore the code, provide feedback, or even contribute to the project's development. Enjoy!
